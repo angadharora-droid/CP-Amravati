@@ -286,7 +286,7 @@ body.lock { overflow: hidden; }
    FOOTER
    ========================================================= */
 .ftr { background: var(--plum-dk); color: rgba(255,255,255,0.72); }
-.ftr__top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 44px; padding: clamp(54px,7vw,90px) 0 54px; }
+.ftr__top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 44px; padding-block: clamp(48px,7vw,90px) 48px; }
 /* No plate — flip the dark wordmark to white so it reads on the ink footer. */
 .ftr__logo { width: 188px; margin-bottom: 22px; filter: brightness(0) invert(1); }
 .ftr__blurb { font-family: var(--serif); font-size: 19px; line-height: 1.5; max-width: 320px; color: rgba(255,255,255,0.6); }
@@ -298,7 +298,7 @@ body.lock { overflow: hidden; }
 .ftr__contact a { display: block; font-family: var(--display); font-size: 18px; color: #fff; }
 .ftr__contact a:hover { color: var(--sand); }
 .ftr__contact em { font-style: normal; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
-.ftr__bar { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding: 22px 0; border-top: 1px solid rgba(255,255,255,0.18); font-size: 12.5px; }
+.ftr__bar { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-block: 22px; border-top: 1px solid rgba(255,255,255,0.18); font-size: 12.5px; }
 .ftr__bar a:hover { color: var(--sand); }
 
 /* =========================================================
@@ -340,7 +340,8 @@ body.lock { overflow: hidden; }
   .stripstats .s { border-bottom: 1px solid rgba(255,255,255,0.14); }
   .tiles { grid-template-columns: 1fr; }
   .form__row { grid-template-columns: 1fr; }
-  .ftr__top { grid-template-columns: 1fr; }
+  .ftr__top { grid-template-columns: 1fr; gap: 32px; }
+  .ftr__blurb { max-width: none; }
   .rrow { grid-template-columns: auto 1fr; }
   .rrow__meta { display: none; }
   .gwall { column-count: 1; }
