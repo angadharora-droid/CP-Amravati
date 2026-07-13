@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact &amp; Reservations | Centre Point Amravati</title>
+  <meta name="description" content="Reserve a room or enquire about an event at Centre Point Amravati — Near Chatri Talav, Dastur Nagar, Amravati 444606." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="pagepad"></div>
+
+  <header class="phead">
+    <div class="shell phead__grid">
+      <div class="phead__num">07</div>
+      <div>
+        <span class="eyebrow eyebrow--plain" data-reveal>Reservations</span>
+        <h1 class="t-xl" data-split>Contact Us</h1>
+        <p class="phead__crumb"><a href="index.html">Home</a> · Contact</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="chapter">
+    <div class="shell edito" style="align-items:start">
+      <!-- FORM -->
+      <div data-reveal="l">
+        <span class="num">Send an enquiry</span>
+        <h2 class="t-lg" style="margin:12px 0 26px">Plan your stay</h2>
+        <form class="form" id="enquiryForm" novalidate>
+          <div class="field">
+            <label>Full name</label>
+            <input type="text" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form__row">
+            <div class="field">
+              <label>I'd like to talk about</label>
+              <select name="topic">
+                <option value="A stay">A stay</option>
+                <option value="An event">An event</option>
+                <option value="Dining">Dining</option>
+                <option value="Something else">Something else</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Phone or email</label>
+              <input type="text" name="contact" placeholder="So we can reach you" required />
+            </div>
+          </div>
+          <div class="field">
+            <label>Message</label>
+            <textarea name="message" id="prefill" placeholder="Dates, guest numbers, the occasion — whatever is useful."></textarea>
+          </div>
+          <div><button type="submit" class="btn btn--plum">Send Enquiry</button></div>
+          <p class="form__note" id="formNote" hidden></p>
+        </form>
+      </div>
+
+      <!-- DETAILS -->
+      <div data-reveal="r">
+        <figure class="edito__fig" style="margin-bottom:30px"><img src="/src/assets/images/hotel-facade.jpeg" alt="Centre Point Amravati" style="aspect-ratio:4/3" /></figure>
+        <span class="num">Find us</span>
+        <h3 class="t-md" style="margin:12px 0 6px">Near Chatri Talav</h3>
+        <p class="muted" style="font-family:var(--serif); font-size:19px">Dastur Nagar, Amravati, Maharashtra 444606 · on AH46</p>
+        <ul class="deflist" style="margin-top:22px">
+          <li><span>Amravati Railway Station</span><b>6 km</b></li>
+          <li><span>Rajapeth business district</span><b>6 km</b></li>
+          <li><span>Belora Airport</span><b>15 km</b></li>
+          <li><span>Check-in / Check-out</span><b>2 PM / 12 PM</b></li>
+        </ul>
+        <div style="margin-top:22px; display:flex; flex-direction:column; gap:10px">
+          <a href="tel:+919266923456" class="arrowlink" style="text-transform:none; letter-spacing:0.03em">+91 92669 23456 — Rooms</a>
+          <a href="tel:+919763715985" class="arrowlink" style="text-transform:none; letter-spacing:0.03em">+91 97637 15985 — Desk</a>
+          <a href="mailto:gm.amravati@cpgh.in" class="arrowlink" style="text-transform:none; letter-spacing:0.03em">gm.amravati@cpgh.in</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="height:440px; border-top:1px solid var(--rule)">
+    <iframe
+      title="Map to Centre Point Amravati"
+      src="https://www.google.com/maps?q=Chatri%20Talav%2C%20Dastur%20Nagar%2C%20Amravati%20444606&output=embed"
+      width="100%" height="100%" style="border:0; display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+
+  <script type="module" src="/src/site.js"></script>
+</body>
+</html>

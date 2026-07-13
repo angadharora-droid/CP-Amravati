@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="12" fill="#a80564"/>
+
+  <!-- live: rotating accent ring -->
+  <circle cx="32" cy="32" r="25" fill="none" stroke="#ffffff" stroke-width="2"
+          stroke-linecap="round" stroke-dasharray="30 130" opacity="0.85">
+    <animateTransform attributeName="transform" type="rotate"
+        from="0 32 32" to="360 32 32" dur="3s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- live: gentle breathing monogram -->
+  <text x="32" y="34" text-anchor="middle" dominant-baseline="central"
+        font-family="Georgia, 'Times New Roman', serif" font-size="28"
+        letter-spacing="1" fill="#ffffff">
+    CP
+    <animate attributeName="opacity" values="1;0.6;1" dur="2.4s" repeatCount="indefinite"/>
+  </text>
+</svg>

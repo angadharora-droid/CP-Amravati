@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: centrepoint-amravati-api
+    runtime: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: JWT_SECRET
+        generateValue: true
+      # Set these in the Render dashboard — never commit them.
+      - key: MONGO_URI
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
