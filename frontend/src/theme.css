@@ -31,7 +31,7 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 20px); }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 20px); overflow-x: hidden; }
 body {
   font-family: var(--ui);
   font-weight: 300;
@@ -133,7 +133,8 @@ body.lock { overflow: hidden; }
 /* Contain any sub-pixel image overflow at the section edge (no sticky children here). */
 .mast, .ctasplit, .edito { overflow-x: clip; }
 /* Masthead fills the first screen (viewport minus the fixed header). */
-.mast__grid { display: grid; grid-template-columns: 1.05fr 0.95fr; min-height: calc(100vh - var(--header-h)); }
+/* dvh = dynamic viewport height, so the browser's address bar is accounted for */
+.mast__grid { display: grid; grid-template-columns: 1.05fr 0.95fr; min-height: calc(100svh - var(--header-h)); }
 .mast__lead { padding: clamp(32px, 5vh, 80px) clamp(30px, 4vw, 70px) clamp(32px, 5vh, 80px) var(--gut); display: flex; flex-direction: column; justify-content: center; border-right: 1px solid var(--rule); }
 .mast__meta { display: flex; gap: 22px; flex-wrap: wrap; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grey); margin-bottom: 26px; }
 .mast__meta b { color: var(--plum); font-weight: 500; }
@@ -303,10 +304,11 @@ body.lock { overflow: hidden; }
 /* =========================================================
    REVEAL
    ========================================================= */
+/* All reveals move vertically only — a horizontal offset would poke the
+   element past the screen edge until it animates in (causing clipping). */
 [data-reveal] { opacity: 0; transform: translateY(30px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
 [data-reveal].in { opacity: 1; transform: none; }
-[data-reveal='l'] { transform: translateX(-36px); }
-[data-reveal='r'] { transform: translateX(36px); }
+[data-reveal='l'], [data-reveal='r'] { transform: translateY(30px); }
 [data-reveal='l'].in, [data-reveal='r'].in { transform: none; }
 
 /* =========================================================
