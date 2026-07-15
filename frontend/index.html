@@ -38,6 +38,32 @@
     </div>
   </section>
 
+  <!-- ===================== BOOKING BAR ===================== -->
+  <section class="bookbar">
+    <div class="shell bookbar__in">
+      <span class="eyebrow eyebrow--plain bookbar__label" data-reveal>Book direct · best rate</span>
+      <form class="searchbar searchbar--widget" id="bookWidget" data-reveal>
+        <div class="field">
+          <label>Check-in</label>
+          <input type="date" name="checkIn" required />
+        </div>
+        <div class="field">
+          <label>Check-out</label>
+          <input type="date" name="checkOut" required />
+        </div>
+        <div class="field">
+          <label>Guests</label>
+          <input type="number" name="guests" min="1" max="12" value="2" required />
+        </div>
+        <div class="field">
+          <label>Rooms</label>
+          <input type="number" name="rooms" min="1" max="10" value="1" required />
+        </div>
+        <button type="submit" class="btn btn--plum">Check availability</button>
+      </form>
+    </div>
+  </section>
+
   <!-- ===================== STAT STRIP ===================== -->
   <section class="chapter--ink" style="border:0">
     <div class="stripstats">

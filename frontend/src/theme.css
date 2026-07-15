@@ -301,6 +301,10 @@ body.lock { overflow: hidden; }
 .searchbar--widget .field label { font-size: 10px; }
 .searchbar--widget .field input { padding: 12px 14px; }
 .searchbar--widget .btn { height: 49px; justify-content: center; white-space: nowrap; }
+
+/* Home-page booking bar — sits between the hero and the stat strip */
+.bookbar { background: var(--cream); border-bottom: 1px solid var(--rule); padding: clamp(26px, 4vw, 44px) 0; }
+.bookbar__label { display: block; margin-bottom: 16px; }
 @media (max-width: 1000px) {
   .searchbar--page, .searchbar--widget { grid-template-columns: 1fr 1fr; }
   .searchbar--page .btn, .searchbar--widget .btn { grid-column: 1 / -1; }
