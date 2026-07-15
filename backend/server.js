@@ -16,7 +16,9 @@ import { paymentsEnabled } from './src/lib/razorpay.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const FRONTEND = process.env.FRONTEND_ORIGIN || 'http://localhost:5173';
+// Production sets CORS_ORIGINS (per render.yaml); dev may set FRONTEND_ORIGIN.
+// Either can be a comma-separated list of allowed site origins.
+const FRONTEND = process.env.CORS_ORIGINS || process.env.FRONTEND_ORIGIN || 'http://localhost:5173';
 
 if (!process.env.JWT_SECRET) {
   console.error('✗ JWT_SECRET is not set. Copy .env.example to .env first.');

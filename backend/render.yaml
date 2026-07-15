@@ -13,7 +13,19 @@ services:
       - key: JWT_SECRET
         generateValue: true
       # Set these in the Render dashboard — never commit them.
-      - key: MONGO_URI
+      - key: MONGO_URI          # hosted MongoDB (Atlas) connection string
         sync: false
-      - key: CORS_ORIGINS
+      - key: CORS_ORIGINS       # e.g. https://www.centrepointamravati.com,https://centrepointamravati.com
+        sync: false
+      # Seeds the staff login on first boot (also refreshes the password on deploy).
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: ADMIN_NAME
+        value: Front Desk
+      # Razorpay — leave unset to run "pay at hotel desk"; set both to take payments online.
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
         sync: false
