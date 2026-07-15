@@ -283,6 +283,33 @@ body.lock { overflow: hidden; }
 .deflist b { font-family: var(--display); font-weight: 400; color: var(--plum); }
 
 /* =========================================================
+   BOOKING SEARCH BAR — shared by the booking page and the
+   compact widget on the rooms page.
+   ========================================================= */
+.searchbar { display: grid; gap: 16px; }
+.searchbar--page { grid-template-columns: repeat(4, 1fr) auto; align-items: end; }
+.searchbar--page .btn { height: 51px; justify-content: center; white-space: nowrap; }
+.searchbar__note { margin-top: 16px; font-size: 15px; color: var(--plum); }
+.searchbar--widget {
+  grid-template-columns: repeat(4, 1fr) auto;
+  align-items: end;
+  padding: clamp(18px, 2.4vw, 26px);
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--plum);
+}
+.searchbar--widget .field label { font-size: 10px; }
+.searchbar--widget .field input { padding: 12px 14px; }
+.searchbar--widget .btn { height: 49px; justify-content: center; white-space: nowrap; }
+@media (max-width: 1000px) {
+  .searchbar--page, .searchbar--widget { grid-template-columns: 1fr 1fr; }
+  .searchbar--page .btn, .searchbar--widget .btn { grid-column: 1 / -1; }
+}
+@media (max-width: 600px) {
+  .searchbar--page, .searchbar--widget { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
    FOOTER
    ========================================================= */
 .ftr { background: var(--plum-dk); color: rgba(255,255,255,0.72); }

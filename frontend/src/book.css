@@ -1,0 +1,99 @@
+/* =========================================================
+   BOOKING ENGINE — search widget, room results, summary,
+   confirmation. Uses the site's brand tokens from theme.css.
+   ========================================================= */
+
+/* ---- step rail ---- */
+.bsteps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  padding: 24px 0 0;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+.bsteps li { display: inline-flex; align-items: center; gap: 10px; opacity: 0.5; transition: opacity 0.3s; }
+.bsteps li b {
+  display: grid; place-items: center;
+  width: 24px; height: 24px;
+  font-family: var(--display); font-weight: 400;
+  border: 1px solid var(--rule); border-radius: 50%;
+  color: var(--grey);
+}
+.bsteps li.is-on { opacity: 1; color: var(--plum); }
+.bsteps li.is-on b { border-color: var(--plum); color: var(--plum); }
+.bsteps li.is-done { opacity: 1; color: var(--ink); }
+.bsteps li.is-done b { border-color: var(--plum); background: var(--plum); color: #fff; }
+
+/* ---- two-column layout ---- */
+.book__grid { display: grid; grid-template-columns: 1fr 340px; gap: clamp(30px, 4vw, 60px); align-items: start; }
+.book__main > .num { font-family: var(--display); font-size: 15px; color: var(--grey); letter-spacing: 0.1em; }
+.bpane__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; margin-bottom: 26px; }
+.linkback { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--plum); border-bottom: 1px solid transparent; transition: border-color 0.3s; }
+.linkback:hover { border-color: var(--plum); }
+
+/* ---- room result cards ---- */
+.roomlist { display: flex; flex-direction: column; gap: 16px; }
+.roomcard {
+  display: grid;
+  grid-template-columns: 200px 1fr auto;
+  gap: 24px;
+  padding: 18px;
+  background: var(--white);
+  border: 1px solid var(--rule);
+  transition: box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+.roomcard:hover { box-shadow: 0 24px 50px -34px rgba(26,18,22,0.4); }
+.roomcard.is-out { opacity: 0.55; }
+.roomcard__fig { position: relative; overflow: hidden; aspect-ratio: 4/3; background: var(--cream); }
+.roomcard__fig img { width: 100%; height: 100%; object-fit: cover; }
+.roomcard__body { min-width: 0; }
+.roomcard__name { font-family: var(--display); font-size: 26px; color: var(--ink); }
+.roomcard__meta { display: flex; gap: 8px 16px; flex-wrap: wrap; margin: 8px 0 12px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--grey); }
+.roomcard__desc { font-family: var(--serif); font-size: 18px; line-height: 1.45; color: var(--char); }
+.roomcard__amen { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.roomcard__amen span { font-size: 11px; letter-spacing: 0.04em; color: var(--grey); border: 1px solid var(--rule-soft); padding: 3px 9px; }
+.roomcard__side { display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; text-align: right; min-width: 150px; }
+.roomcard__price b { font-family: var(--display); font-size: 30px; color: var(--ink); display: block; line-height: 1.1; }
+.roomcard__price span { font-size: 12px; color: var(--grey); }
+.roomcard__total { font-size: 13px; color: var(--plum); margin-top: 4px; }
+.roomcard__stock { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 8px; }
+.roomcard__stock.low { color: #b5561a; }
+.roomcard__stock.none { color: var(--grey); }
+.roomcard .btn { margin-top: 14px; padding: 12px 26px; }
+
+/* ---- summary sidebar ---- */
+.book__aside { position: sticky; top: calc(var(--header-h) + 24px); display: flex; flex-direction: column; gap: 18px; }
+.summary { background: var(--white); border: 1px solid var(--rule); border-top: 3px solid var(--plum); padding: 24px; }
+.summary h3 { font-family: var(--display); font-size: 20px; margin-bottom: 16px; }
+.summary--help { border-top-color: var(--sand); }
+.summary--help p { font-family: var(--serif); font-size: 17px; color: var(--grey); margin-bottom: 12px; }
+.sumrow { display: flex; justify-content: space-between; gap: 14px; padding: 9px 0; border-bottom: 1px solid var(--rule-soft); font-size: 14px; }
+.sumrow span { color: var(--grey); }
+.sumrow b { font-weight: 400; color: var(--ink); text-align: right; }
+.sumrow--total { border-bottom: 0; padding-top: 16px; margin-top: 6px; border-top: 1px solid var(--rule); font-size: 15px; }
+.sumrow--total b { font-family: var(--display); font-size: 26px; color: var(--plum); }
+.summary__pay { margin-top: 10px; font-size: 12px; color: var(--grey); }
+
+/* ---- confirmation ---- */
+.done { background: var(--white); border: 1px solid var(--rule); border-top: 3px solid var(--plum); padding: clamp(28px, 4vw, 46px); }
+.done__tick { width: 54px; height: 54px; border-radius: 50%; background: var(--plum); color: #fff; display: grid; place-items: center; font-size: 26px; margin-bottom: 20px; }
+.done h2 { font-size: clamp(28px, 3.4vw, 40px); margin-bottom: 10px; }
+.done__ref { font-family: var(--display); font-size: 22px; color: var(--plum); letter-spacing: 0.04em; margin: 4px 0 20px; }
+.done .deflist { margin: 22px 0; }
+.done__actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+
+/* ---- loading / empty ---- */
+.bspin { padding: 50px 0; text-align: center; font-family: var(--serif); font-size: 20px; color: var(--grey); }
+
+@media (max-width: 1000px) {
+  .book__grid { grid-template-columns: 1fr; }
+  .book__aside { position: static; order: -1; }
+}
+@media (max-width: 620px) {
+  .roomcard { grid-template-columns: 1fr; }
+  .roomcard__fig { aspect-ratio: 16/9; }
+  .roomcard__side { align-items: flex-start; text-align: left; margin-top: 8px; }
+}

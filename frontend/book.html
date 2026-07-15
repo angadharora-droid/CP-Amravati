@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Room | Centre Point Amravati</title>
+  <meta name="description" content="Check availability and book your stay at Centre Point Amravati — live rates, instant confirmation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="pagepad"></div>
+
+  <header class="phead">
+    <div class="shell phead__grid">
+      <div class="phead__num">62</div>
+      <div>
+        <span class="eyebrow eyebrow--plain" data-reveal>Reservations</span>
+        <h1 class="t-xl" data-split>Book your stay</h1>
+        <p class="phead__crumb"><a href="index.html">Home</a> · Book</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- STEP RAIL -->
+  <div class="shell">
+    <ol class="bsteps" id="bsteps">
+      <li data-step="search" class="is-on"><b>1</b> Dates</li>
+      <li data-step="rooms"><b>2</b> Choose a room</li>
+      <li data-step="guest"><b>3</b> Your details</li>
+      <li data-step="done"><b>4</b> Confirmed</li>
+    </ol>
+  </div>
+
+  <section class="chapter book">
+    <div class="shell book__grid">
+      <!-- ============ MAIN COLUMN ============ -->
+      <div class="book__main">
+
+        <!-- STEP 1 — SEARCH -->
+        <div class="bpane" data-pane="search">
+          <span class="num">Step 1</span>
+          <h2 class="t-lg" style="margin:10px 0 24px">When are you staying?</h2>
+          <form class="searchbar searchbar--page" id="searchForm">
+            <div class="field">
+              <label>Check-in</label>
+              <input type="date" name="checkIn" required />
+            </div>
+            <div class="field">
+              <label>Check-out</label>
+              <input type="date" name="checkOut" required />
+            </div>
+            <div class="field">
+              <label>Guests</label>
+              <input type="number" name="guests" min="1" max="12" value="2" required />
+            </div>
+            <div class="field">
+              <label>Rooms</label>
+              <input type="number" name="rooms" min="1" max="10" value="1" required />
+            </div>
+            <button type="submit" class="btn btn--plum">Check availability</button>
+          </form>
+          <p class="searchbar__note" id="searchNote" hidden></p>
+        </div>
+
+        <!-- STEP 2 — ROOMS -->
+        <div class="bpane" data-pane="rooms" hidden>
+          <div class="bpane__head">
+            <div>
+              <span class="num">Step 2</span>
+              <h2 class="t-lg" id="roomsTitle" style="margin:10px 0 0">Available rooms</h2>
+            </div>
+            <button class="linkback" data-goto="search">Change dates</button>
+          </div>
+          <div class="roomlist" id="roomList"></div>
+        </div>
+
+        <!-- STEP 3 — GUEST -->
+        <div class="bpane" data-pane="guest" hidden>
+          <div class="bpane__head">
+            <div>
+              <span class="num">Step 3</span>
+              <h2 class="t-lg" style="margin:10px 0 0">Guest details</h2>
+            </div>
+            <button class="linkback" data-goto="rooms">Change room</button>
+          </div>
+          <form class="form" id="guestForm" novalidate>
+            <div class="field">
+              <label>Full name</label>
+              <input type="text" name="guestName" placeholder="Guest name" required />
+            </div>
+            <div class="form__row">
+              <div class="field">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </div>
+              <div class="field">
+                <label>Phone</label>
+                <input type="tel" name="phone" placeholder="+91 …" required />
+              </div>
+            </div>
+            <div class="field">
+              <label>Special requests <span style="text-transform:none;letter-spacing:0;color:var(--grey)">(optional)</span></label>
+              <textarea name="requests" placeholder="Early check-in, high floor, airport pickup…"></textarea>
+            </div>
+            <div>
+              <button type="submit" class="btn btn--plum" id="payBtn">Continue to payment</button>
+            </div>
+            <p class="form__note" id="guestNote" hidden></p>
+          </form>
+        </div>
+
+        <!-- STEP 4 — DONE -->
+        <div class="bpane" data-pane="done" hidden>
+          <div class="done" id="doneCard"></div>
+        </div>
+      </div>
+
+      <!-- ============ SUMMARY SIDEBAR ============ -->
+      <aside class="book__aside">
+        <div class="summary" id="summary" hidden>
+          <h3>Your stay</h3>
+          <div class="summary__body" id="summaryBody"></div>
+        </div>
+        <div class="summary summary--help">
+          <h3>Need a hand?</h3>
+          <p>Call our reservations desk and we'll book it for you.</p>
+          <a href="tel:+919266923456" class="arrowlink" style="text-transform:none;letter-spacing:.03em">+91 92669 23456</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <script type="module" src="/src/book.js"></script>
+</body>
+</html>

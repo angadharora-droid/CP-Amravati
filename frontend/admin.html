@@ -43,6 +43,12 @@
       </div>
     </div>
 
+    <nav class="tabs" id="tabs">
+      <button class="tab is-on" data-tab="bookings">Bookings</button>
+      <button class="tab" data-tab="enquiries">Enquiries</button>
+      <button class="tab" data-tab="rooms">Rooms &amp; Rates</button>
+    </nav>
+
     <div class="top__right">
       <span class="top__who" id="who"></span>
       <a href="/" class="top__link">View site</a>
@@ -50,14 +56,33 @@
     </div>
   </header>
 
-  <main class="inbox">
+  <!-- ---------------- BOOKINGS ---------------- -->
+  <main class="view" id="view-bookings">
+    <div class="inbox__head">
+      <div>
+        <h2>Bookings</h2>
+        <p id="bkSummary">Loading…</p>
+      </div>
+      <div class="filters" id="bkFilters">
+        <button class="filter is-on" data-status="all">All <b id="bkAll">0</b></button>
+        <button class="filter" data-status="pending">Pending <b id="bkPending">0</b></button>
+        <button class="filter" data-status="confirmed">Confirmed <b id="bkConfirmed">0</b></button>
+        <button class="filter" data-status="checked_in">Checked-in <b id="bkChecked_in">0</b></button>
+        <button class="filter" data-status="checked_out">Checked-out <b id="bkChecked_out">0</b></button>
+        <button class="filter" data-status="cancelled">Cancelled <b id="bkCancelled">0</b></button>
+      </div>
+    </div>
+    <div class="list" id="bkList"></div>
+    <p class="empty" id="bkEmpty" hidden>No bookings yet.</p>
+  </main>
 
+  <!-- ---------------- ENQUIRIES ---------------- -->
+  <main class="view" id="view-enquiries" hidden>
     <div class="inbox__head">
       <div>
         <h2>Enquiries</h2>
         <p id="summary">Loading…</p>
       </div>
-
       <div class="filters" id="filters">
         <button class="filter is-on" data-status="all">All <b id="cAll">0</b></button>
         <button class="filter" data-status="new">New <b id="cNew">0</b></button>
@@ -65,12 +90,77 @@
         <button class="filter" data-status="archived">Archived <b id="cArchived">0</b></button>
       </div>
     </div>
-
     <div class="list" id="list"></div>
-
     <p class="empty" id="empty" hidden>Nothing here yet.</p>
   </main>
+
+  <!-- ---------------- ROOMS & RATES ---------------- -->
+  <main class="view" id="view-rooms" hidden>
+    <div class="inbox__head">
+      <div>
+        <h2>Rooms &amp; Rates</h2>
+        <p id="rmSummary">Loading…</p>
+      </div>
+      <button class="btn btn--sm" id="addRoomBtn">+ Add room type</button>
+    </div>
+
+    <div class="rooms" id="rmList"></div>
+
+    <!-- close-outs & rate overrides -->
+    <section class="blocks">
+      <div class="blocks__head">
+        <h3>Availability &amp; rate overrides</h3>
+        <p>Close rooms for a date range, or set a special price (seasonal / event rates).</p>
+      </div>
+
+      <form class="blockform" id="blockForm">
+        <div class="bf">
+          <label>Room type</label>
+          <select name="roomType" id="blkRoom"><option value="">All rooms</option></select>
+        </div>
+        <div class="bf"><label>From</label><input type="date" name="from" required /></div>
+        <div class="bf"><label>To</label><input type="date" name="to" required /></div>
+        <div class="bf"><label>Price override ₹</label><input type="number" name="price" min="0" placeholder="—" /></div>
+        <div class="bf bf--check"><label><input type="checkbox" name="closed" /> Close out</label></div>
+        <div class="bf"><label>Label</label><input type="text" name="label" placeholder="e.g. Diwali" /></div>
+        <button type="submit" class="btn btn--sm">Add</button>
+      </form>
+      <p class="form__err" id="blockErr" hidden></p>
+
+      <div class="blocklist" id="blkList"></div>
+    </section>
+  </main>
 </div>
+
+<!-- room editor dialog -->
+<dialog class="modal" id="roomModal">
+  <form method="dialog" class="modal__card" id="roomForm">
+    <h3 id="roomModalTitle">Add room type</h3>
+    <div class="mrow">
+      <label class="mfield">Name<input name="name" required /></label>
+      <label class="mfield">Slug (URL)<input name="slug" placeholder="auto from name" /></label>
+    </div>
+    <div class="mrow">
+      <label class="mfield">Price / night ₹<input name="basePrice" type="number" min="0" required /></label>
+      <label class="mfield">Total rooms<input name="totalRooms" type="number" min="0" required /></label>
+      <label class="mfield">Max guests<input name="maxOccupancy" type="number" min="1" value="2" /></label>
+    </div>
+    <div class="mrow">
+      <label class="mfield">Size<input name="size" placeholder="e.g. 250 sq ft" /></label>
+      <label class="mfield">Image path<input name="image" placeholder="/images/premium-room.jpeg" /></label>
+      <label class="mfield">Sort order<input name="sortOrder" type="number" value="0" /></label>
+    </div>
+    <label class="mfield">Description<textarea name="description" rows="2"></textarea></label>
+    <label class="mfield">Amenities (comma-separated)<input name="amenities" placeholder="Free Wi-Fi, AC, Mini bar" /></label>
+    <label class="mfield">Room numbers <span class="mfield__hint">— staff-only, sets the room count. Comma or space separated.</span><textarea name="roomNumbers" rows="2" placeholder="201, 202, 203…"></textarea></label>
+    <label class="mcheck"><input type="checkbox" name="active" checked /> Active (bookable on the website)</label>
+    <p class="form__err" id="roomErr" hidden></p>
+    <div class="modal__acts">
+      <button value="cancel" class="btn btn--ghost">Cancel</button>
+      <button value="save" class="btn" id="roomSave">Save</button>
+    </div>
+  </form>
+</dialog>
 
 <script type="module" src="/src/admin.js"></script>
 </body>

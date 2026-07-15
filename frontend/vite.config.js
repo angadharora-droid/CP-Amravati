@@ -13,6 +13,7 @@ export default defineConfig({
         amenities: resolve(__dirname, 'amenities.html'),
         gallery: resolve(__dirname, 'gallery.html'),
         contact: resolve(__dirname, 'contact.html'),
+        book: resolve(__dirname, 'book.html'),
         admin: resolve(__dirname, 'admin.html'),
       },
     },

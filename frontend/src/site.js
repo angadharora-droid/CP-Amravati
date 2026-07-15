@@ -46,7 +46,7 @@ function buildHeader() {
     <div class="hdr__in">
       <a href="index.html" class="hdr__logo"><img src="${logoUrl}" alt="Centre Point Amravati" /></a>
       <nav><ul class="hdr__nav">${items}</ul></nav>
-      <a href="contact.html" class="btn btn--plum hdr__cta">Reserve</a>
+      <a href="book.html" class="btn btn--plum hdr__cta">Book Now</a>
       <button class="hdr__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>`;
   document.body.prepend(el);
@@ -61,7 +61,7 @@ function buildDrawer() {
   }).join('');
   const el = document.createElement('div');
   el.className = 'drawer';
-  el.innerHTML = `${groups}<a href="contact.html" class="btn btn--plum">Reserve a Room</a>`;
+  el.innerHTML = `${groups}<a href="book.html" class="btn btn--plum">Book a Room</a>`;
   document.body.appendChild(el);
   return el;
 }
@@ -248,6 +248,38 @@ function wireGallery() {
   });
 }
 
+/* ---------- booking search widget (rooms page) ---------- */
+function wireBookWidget() {
+  const w = document.getElementById('bookWidget');
+  if (!w) return;
+  const iso = (d) => d.toISOString().slice(0, 10);
+  const today = new Date();
+  const tomorrow = new Date(Date.now() + 86400000);
+  const dayAfter = new Date(Date.now() + 2 * 86400000);
+
+  w.checkIn.min = iso(today);
+  w.checkOut.min = iso(tomorrow);
+  w.checkIn.value = iso(tomorrow);
+  w.checkOut.value = iso(dayAfter);
+
+  w.checkIn.addEventListener('change', () => {
+    const next = new Date(new Date(w.checkIn.value).getTime() + 86400000);
+    w.checkOut.min = iso(next);
+    if (w.checkOut.value <= w.checkIn.value) w.checkOut.value = iso(next);
+  });
+
+  w.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const q = new URLSearchParams({
+      checkIn: w.checkIn.value,
+      checkOut: w.checkOut.value,
+      guests: w.guests.value || '2',
+      rooms: w.rooms.value || '1',
+    });
+    location.href = `book.html?${q.toString()}`;
+  });
+}
+
 /* ---------- enquiry form ---------- */
 function wireEnquiry() {
   const form = document.getElementById('enquiryForm');
@@ -286,4 +318,5 @@ wireReveal();
 wireParallax();
 wireRoomIndex();
 wireGallery();
+wireBookWidget();
 wireEnquiry();

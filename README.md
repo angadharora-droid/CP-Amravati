@@ -7,7 +7,10 @@ The site is built around one idea: **the hotel told as a single day.** You scrol
 section is the part of the hotel that matters at that time — the kitchens at 08:00, the
 rooms at noon, the pool at four, the halls at seven, the bar at eleven.
 
-It is a brochure site with an enquiry form. There is no booking engine.
+It is a brochure site with an enquiry form **and a booking engine** — guests check
+live availability, pick a room, and pay online through Razorpay (or reserve to pay at
+the desk when Razorpay keys aren't set). Staff run the whole thing from **The Desk**:
+bookings, room types, rates, and date-level close-outs / rate overrides.
 
 ## Layout
 
@@ -86,7 +89,24 @@ The website is at `/`. The admin is at `/admin.html`.
 | `DELETE` | `/api/enquiries/:id` | admin |
 | `POST` | `/api/auth/login` | public — returns a 12h JWT |
 | `GET` | `/api/auth/me` | admin |
+| `GET` | `/api/rooms/public?checkIn=&checkOut=` | public — room types + availability & price for a stay (room numbers are never sent) |
+| `POST` | `/api/bookings/quote` | public — price a stay |
+| `POST` | `/api/bookings` | public — create a booking (+ Razorpay order when live) |
+| `POST` | `/api/bookings/verify` | public — confirm a Razorpay payment |
+| `GET`/`POST`/`PATCH`/`DELETE` | `/api/rooms` | admin — manage room types, rates, inventory, room numbers |
+| `GET`/`PATCH`/`DELETE` | `/api/bookings` | admin — booking list + lifecycle (confirm / check-in / check-out / cancel) |
+| `GET`/`POST`/`DELETE` | `/api/blocks` | admin — close-outs & seasonal rate overrides |
 | `GET` | `/health` | anyone |
+
+**Payments.** Set `RAZORPAY_KEY_ID` and `RAZORPAY_KEY_SECRET` in the backend `.env`
+to take online payments. Leave them empty and the engine still works — bookings are
+confirmed as "pay at the hotel desk." The browser gets the public key from the
+create-booking response, so there is no Razorpay key to set on the frontend.
+
+**Inventory.** Room types are seeded once on first boot (`src/scripts/seedRooms.js`,
+also `npm run seed:rooms`): 62 currently-sellable rooms across Executive, Premium,
+Family Premium, Club and Deluxe; the Luxury Suite ships inactive (held offline).
+Everything after that is editable in The Desk.
 
 ## Deploying
 

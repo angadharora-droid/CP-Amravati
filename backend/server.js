@@ -8,6 +8,11 @@ import { connectDB } from './src/config/db.js';
 import Admin from './src/models/Admin.js';
 import enquiryRoutes from './src/routes/enquiries.js';
 import authRoutes from './src/routes/auth.js';
+import roomRoutes from './src/routes/rooms.js';
+import bookingRoutes from './src/routes/bookings.js';
+import blockRoutes from './src/routes/blocks.js';
+import { seedRooms } from './src/scripts/seedRooms.js';
+import { paymentsEnabled } from './src/lib/razorpay.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -39,6 +44,9 @@ app.get('/health', (req, res) =>
 
 app.use('/api/enquiries', enquiryRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/rooms', roomRoutes);
+app.use('/api/bookings', bookingRoutes);
+app.use('/api/blocks', blockRoutes);
 
 app.use((req, res) => res.status(404).json({ message: 'No such endpoint.' }));
 app.use((err, req, res, next) => {
@@ -65,9 +73,11 @@ async function seedAdmin() {
 connectDB()
   .then(async () => {
     await seedAdmin();
+    await seedRooms();
     app.listen(PORT, () => {
       console.log(`✓ Server running → port ${PORT} (http://localhost:${PORT})`);
       console.log(`  Allowing frontend origin: ${FRONTEND}`);
+      console.log(`  Payments: ${paymentsEnabled ? 'Razorpay (live keys set)' : 'off — booking = pay at desk'}`);
     });
   })
   .catch((err) => {
