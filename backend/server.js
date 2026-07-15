@@ -27,10 +27,13 @@ if (!process.env.JWT_SECRET) {
 app.set('trust proxy', 1);
 
 const allowed = FRONTEND.split(',').map((s) => s.trim()).filter(Boolean);
+// Any localhost / 127.0.0.1 port is the developer's own machine — allow it in dev
+// so a Vite server that lands on 5174 (because 5173 was taken) still reaches the API.
+const isLocalhost = (origin) => /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin);
 app.use(
   cors({
     origin(origin, cb) {
-      if (!origin || allowed.includes(origin)) return cb(null, true);
+      if (!origin || allowed.includes(origin) || isLocalhost(origin)) return cb(null, true);
       cb(new Error(`Origin ${origin} is not allowed.`));
     },
   })
