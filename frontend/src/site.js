@@ -83,6 +83,7 @@ function buildFooter() {
           <li><a href="banquets.html">Banquets &amp; Events</a></li>
           <li><a href="amenities.html">Amenities</a></li>
           <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="https://careers.centrepointgroup.in/" target="_blank" rel="noopener">Careers</a></li>
         </ul>
       </div>
       <div>
