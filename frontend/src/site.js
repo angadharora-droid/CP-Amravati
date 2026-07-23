@@ -27,7 +27,10 @@ const NAV = [
   { label: 'Amenities', href: 'amenities.html' },
   { label: 'Gallery', href: 'gallery.html' },
   { label: 'Contact', href: 'contact.html' },
+  { label: 'Careers', href: 'https://careers.centrepointgroup.in/', ext: true },
 ];
+
+const extAttr = (n) => (n.ext ? ' target="_blank" rel="noopener"' : '');
 
 const here = location.pathname.split('/').pop() || 'index.html';
 
@@ -37,7 +40,7 @@ function buildHeader() {
     const active = n.href === here ? ' class="is-active"' : '';
     const caret = n.sub ? '<i class="caret"></i>' : '';
     const sub = n.sub ? `<div class="hdr__sub">${n.sub.map(([t, h]) => `<a href="${h}">${t}</a>`).join('')}</div>` : '';
-    return `<li${active}><a href="${n.href}">${n.label}${caret}</a>${sub}</li>`;
+    return `<li${active}><a href="${n.href}"${extAttr(n)}>${n.label}${caret}</a>${sub}</li>`;
   }).join('');
 
   const el = document.createElement('header');
@@ -55,7 +58,7 @@ function buildHeader() {
 
 function buildDrawer() {
   const groups = NAV.map((n) => {
-    const head = n.sub ? `<span>${n.label}</span>` : `<a href="${n.href}">${n.label}</a>`;
+    const head = n.sub ? `<span>${n.label}</span>` : `<a href="${n.href}"${extAttr(n)}>${n.label}</a>`;
     const sub = n.sub ? `<div class="drawer__s">${n.sub.map(([t, h]) => `<a href="${h}">${t}</a>`).join('')}</div>` : '';
     return `<div class="drawer__g">${head}${sub}</div>`;
   }).join('');
