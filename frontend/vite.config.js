@@ -15,6 +15,8 @@ export default defineConfig({
         contact: resolve(__dirname, 'contact.html'),
         book: resolve(__dirname, 'book.html'),
         admin: resolve(__dirname, 'admin.html'),
+        privacyPolicy: resolve(__dirname, 'privacy-policy.html'),
+        termsConditions: resolve(__dirname, 'terms-conditions.html'),
       },
     },
   },

@@ -110,6 +110,7 @@ function buildFooter() {
     <div class="shell ftr__bar">
       <span>© <b>${new Date().getFullYear()}</b> Centre Point Amravati</span>
       <span><a href="https://www.cpgh.in">cpgh.in</a> · Part of the Centre Point group</span>
+      <span><a href="privacy-policy.html">Privacy Policy</a> · <a href="terms-conditions.html">Terms &amp; Conditions</a></span>
     </div>`;
   document.body.appendChild(el);
 }
