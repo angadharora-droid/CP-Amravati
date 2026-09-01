@@ -24,7 +24,7 @@
   --serif: 'Cormorant Garamond', Georgia, serif;
   --ui: 'Jost', 'Segoe UI', system-ui, sans-serif;
 
-  --header-h: 78px;
+  --header-h: 88px;
   --gut: clamp(20px, 5vw, 80px);
   --maxw: 1400px;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -95,7 +95,7 @@ h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; color: var(--ink
 .hdr { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--paper); border-bottom: 1px solid var(--rule); transition: transform 0.5s var(--ease); }
 .hdr.hide { transform: translateY(-100%); }
 .hdr__in { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; gap: 24px; max-width: var(--maxw); margin: 0 auto; padding-inline: var(--gut); }
-.hdr__logo img { height: 48px; width: auto; }
+.hdr__logo img { height: 64px; width: auto; }
 .hdr__nav { display: flex; align-items: center; gap: clamp(16px, 2vw, 34px); }
 .hdr__nav > li { position: relative; }
 .hdr__nav > li > a { display: inline-flex; align-items: center; gap: 6px; padding: 28px 0; font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); transition: color 0.3s; }
