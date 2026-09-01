@@ -155,7 +155,9 @@ function wireReveal() {
       if (e.target.dataset.count !== undefined) runCount(e.target);
       io.unobserve(e.target);
     });
-  }, { threshold: 0.14, rootMargin: '0px 0px -7% 0px' });
+  // threshold must stay 0: an element taller than ~7x the viewport can never reach a
+  // percentage threshold, so a tall block (the gallery wall) would never reveal at all.
+  }, { threshold: 0, rootMargin: '0px 0px -7% 0px' });
 
   document.querySelectorAll('[data-reveal], [data-count]').forEach((el) => io.observe(el));
 }
