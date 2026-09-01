@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Staff-only console and the retired in-house booking flow
+Disallow: /admin
+Disallow: /book
+
+Sitemap: https://centrepointamravati.com/sitemap.xml
