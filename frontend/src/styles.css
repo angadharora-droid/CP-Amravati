@@ -95,7 +95,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
 [data-photo="greens"] { background-image: url('./assets/images/greens-lawn.jpeg'); }
 [data-photo="city-aerial"] { background-image: url('./assets/images/hotel-amravati-aerial.jpeg'); }
 [data-photo="side-facade"] { background-image: url('./assets/images/hotel-chatri-talav.jpeg'); }
-[data-photo="orchid-wide"] { background-image: url('./assets/images/orchid-ballroom.jpeg'); }
+[data-photo="orchid-wide"] { background-image: url('./assets/images/orchid-ballroom-stage.jpeg'); }
 [data-photo="orchid-seating"] { background-image: url('./assets/images/ballroom-seating.jpeg'); }
 [data-photo="orchid-detail"] { background-image: url('./assets/images/ballroom-chandelier.jpeg'); }
 .plate__caption {
