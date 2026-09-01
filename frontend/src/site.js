@@ -253,38 +253,6 @@ function wireGallery() {
   });
 }
 
-/* ---------- booking search widget (rooms page) ---------- */
-function wireBookWidget() {
-  const w = document.getElementById('bookWidget');
-  if (!w) return;
-  const iso = (d) => d.toISOString().slice(0, 10);
-  const today = new Date();
-  const tomorrow = new Date(Date.now() + 86400000);
-  const dayAfter = new Date(Date.now() + 2 * 86400000);
-
-  w.checkIn.min = iso(today);
-  w.checkOut.min = iso(tomorrow);
-  w.checkIn.value = iso(tomorrow);
-  w.checkOut.value = iso(dayAfter);
-
-  w.checkIn.addEventListener('change', () => {
-    const next = new Date(new Date(w.checkIn.value).getTime() + 86400000);
-    w.checkOut.min = iso(next);
-    if (w.checkOut.value <= w.checkIn.value) w.checkOut.value = iso(next);
-  });
-
-  w.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const q = new URLSearchParams({
-      checkIn: w.checkIn.value,
-      checkOut: w.checkOut.value,
-      guests: w.guests.value || '2',
-      rooms: w.rooms.value || '1',
-    });
-    location.href = `book.html?${q.toString()}`;
-  });
-}
-
 /* ---------- enquiry form ---------- */
 function wireEnquiry() {
   const form = document.getElementById('enquiryForm');
@@ -323,5 +291,4 @@ wireReveal();
 wireParallax();
 wireRoomIndex();
 wireGallery();
-wireBookWidget();
 wireEnquiry();

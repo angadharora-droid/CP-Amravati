@@ -89,7 +89,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
 [data-photo="executive"] { background-image: url('./assets/images/executive-room.jpeg'); }
 [data-photo="premium"] { background-image: url('./assets/images/premium-room.jpeg'); }
 [data-photo="family"] { background-image: url('./assets/images/family-premium.jpeg'); }
-[data-photo="club"] { background-image: url('./assets/images/room-view.jpeg'); }
+[data-photo="club"] { background-image: url('./assets/images/club-bed.jpeg'); }
 [data-photo="deluxe"] { background-image: url('./assets/images/deluxe-room.jpeg'); }
 [data-photo="luxury"] { background-image: url('./assets/images/suite-lounge-portrait.jpeg'); }
 [data-photo="greens"] { background-image: url('./assets/images/hotel-facade.jpeg'); }
