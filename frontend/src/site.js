@@ -227,6 +227,37 @@ function wireRoomIndex() {
   activate(0);
 }
 
+/* ---------- auto-rotating figure slides ---------- */
+function wireEditoSlides() {
+  const figs = [...document.querySelectorAll('.edito__fig--slides')];
+  if (!figs.length) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  figs.forEach((fig) => {
+    const slides = [...fig.querySelectorAll('img')];
+    if (slides.length < 2) return;
+    let i = 0;
+    let timer = null;
+    const step = () => {
+      slides[i].classList.remove('is-on');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('is-on');
+    };
+    let inView = false;
+    const stop = () => { clearInterval(timer); timer = null; };
+    const sync = () => {
+      if (inView && !document.hidden) { if (!timer) timer = setInterval(step, 4500); }
+      else stop();
+    };
+
+    // only cycle while the figure is on screen and the tab is in front
+    new IntersectionObserver((entries) => {
+      entries.forEach((e) => { inView = e.isIntersecting; sync(); });
+    }, { threshold: 0.2 }).observe(fig);
+    document.addEventListener('visibilitychange', sync);
+  });
+}
+
 /* ---------- gallery lightbox ---------- */
 function wireGallery() {
   const items = [...document.querySelectorAll('.gwall__i img')];
@@ -290,5 +321,6 @@ wireSplit();
 wireReveal();
 wireParallax();
 wireRoomIndex();
+wireEditoSlides();
 wireGallery();
 wireEnquiry();

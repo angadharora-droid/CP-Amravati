@@ -195,9 +195,16 @@ body.lock { overflow: hidden; }
    ========================================================= */
 .edito { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 5vw, 80px); align-items: center; }
 .edito--flip .edito__fig { order: 2; }
-.edito__fig { position: relative; overflow: hidden; }
-.edito__fig img { width: 100%; aspect-ratio: 3/4; object-fit: cover; transition: transform 1.1s var(--ease); }
+.edito__fig { --edito-h: min(70vh, 620px); position: relative; overflow: hidden; }
+.edito__fig img { width: 100%; aspect-ratio: 3/4; max-height: var(--edito-h); object-fit: cover; transition: transform 1.1s var(--ease); }
 .edito__fig:hover img { transform: scale(1.05); }
+.edito__fig--slides img { position: absolute; inset: 0; height: 100%; opacity: 0; transition: opacity 1s var(--ease), transform 1.1s var(--ease); }
+/* the first slide stays in flow so the figure keeps the exact box of a single-image one */
+.edito__fig--slides img:first-of-type { position: relative; }
+.edito__fig--slides img.is-on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .edito__fig--slides img { transition: none; }
+}
 .edito__fig figcaption { position: absolute; left: 0; bottom: 0; background: var(--plum); color: #fff; padding: 10px 20px; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; }
 .edito__body .num { font-family: var(--display); font-size: 15px; color: var(--grey); letter-spacing: 0.1em; }
 .edito__body h2 { margin: 12px 0 18px; }
