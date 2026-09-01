@@ -49,7 +49,7 @@ function buildHeader() {
     <div class="hdr__in">
       <a href="index.html" class="hdr__logo"><img src="${logoUrl}" alt="Centre Point Amravati" /></a>
       <nav><ul class="hdr__nav">${items}</ul></nav>
-      <a href="book.html" class="btn btn--plum hdr__cta">Book Now</a>
+      <a href="https://www.swiftbook.io/inst/#home?propertyId=742NTWDAgWhnyLgl126a8Mlmxh0AGz4LHiy7UPWIG1g0ODU=&JDRN=Y" class="btn btn--plum hdr__cta" target="_blank" rel="noopener">Book Now</a>
       <button class="hdr__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>`;
   document.body.prepend(el);
@@ -64,7 +64,7 @@ function buildDrawer() {
   }).join('');
   const el = document.createElement('div');
   el.className = 'drawer';
-  el.innerHTML = `${groups}<a href="book.html" class="btn btn--plum">Book a Room</a>`;
+  el.innerHTML = `${groups}<a href="https://www.swiftbook.io/inst/#home?propertyId=742NTWDAgWhnyLgl126a8Mlmxh0AGz4LHiy7UPWIG1g0ODU=&JDRN=Y" class="btn btn--plum" target="_blank" rel="noopener">Book a Room</a>`;
   document.body.appendChild(el);
   return el;
 }
