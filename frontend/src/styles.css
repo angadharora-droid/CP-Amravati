@@ -86,7 +86,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
 }
 [data-photo="bougainvillea"] { background-image: url('./assets/images/bougainvillea-window-table.jpeg'); }
 [data-photo="in-room-dining"] { background-image: url('./assets/images/twin-room.jpeg'); }
-[data-photo="executive"] { background-image: url('./assets/images/executive-room.jpeg'); }
+[data-photo="executive"] { background-image: url('./assets/images/executive-twin.jpeg'); }
 [data-photo="premium"] { background-image: url('./assets/images/premium-room.jpeg'); }
 [data-photo="family"] { background-image: url('./assets/images/family-premium.jpeg'); }
 [data-photo="club"] { background-image: url('./assets/images/club-bed.jpeg'); }
