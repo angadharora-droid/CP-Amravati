@@ -84,7 +84,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
   background-position: center 58%;
   image-rendering: auto;
 }
-[data-photo="bougainvillea"] { background-image: url('./assets/images/suite-lounge.jpeg'); }
+[data-photo="bougainvillea"] { background-image: url('./assets/images/bougainvillea-window-table.jpeg'); }
 [data-photo="in-room-dining"] { background-image: url('./assets/images/twin-room.jpeg'); }
 [data-photo="executive"] { background-image: url('./assets/images/executive-room.jpeg'); }
 [data-photo="premium"] { background-image: url('./assets/images/premium-room.jpeg'); }
