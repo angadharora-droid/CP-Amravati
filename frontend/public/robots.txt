@@ -5,4 +5,4 @@ Allow: /
 Disallow: /admin
 Disallow: /book
 
-Sitemap: https://centrepointamravati.com/sitemap.xml
+Sitemap: https://www.centrepointamravati.com/sitemap.xml
