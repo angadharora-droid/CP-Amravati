@@ -92,7 +92,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
 [data-photo="club"] { background-image: url('./assets/images/club-bed.jpeg'); }
 [data-photo="deluxe"] { background-image: url('./assets/images/deluxe-room.jpeg'); }
 [data-photo="luxury"] { background-image: url('./assets/images/suite-lounge-portrait.jpeg'); }
-[data-photo="greens"] { background-image: url('./assets/images/hotel-facade.jpeg'); }
+[data-photo="greens"] { background-image: url('./assets/images/greens-lawn.jpeg'); }
 [data-photo="city-aerial"] { background-image: url('./assets/images/hotel-amravati-aerial.jpeg'); }
 [data-photo="side-facade"] { background-image: url('./assets/images/hotel-chatri-talav.jpeg'); }
 [data-photo="orchid-wide"] { background-image: url('./assets/images/orchid-ballroom.jpeg'); }
