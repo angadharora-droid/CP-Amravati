@@ -6,7 +6,7 @@
    ========================================================= */
 
 import './theme.css';
-import logoUrl from './assets/images/centre-point-logo.png';
+import logoUrl from './assets/images/centre-point-logo.webp';
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
@@ -47,7 +47,7 @@ function buildHeader() {
   el.className = 'hdr';
   el.innerHTML = `
     <div class="hdr__in">
-      <a href="index.html" class="hdr__logo"><img src="${logoUrl}" alt="Centre Point Amravati" width="1200" height="683" /></a>
+      <a href="index.html" class="hdr__logo"><img src="${logoUrl}" alt="Centre Point Amravati" width="500" height="285" /></a>
       <nav><ul class="hdr__nav">${items}</ul></nav>
       <a href="https://www.swiftbook.io/inst/#home?propertyId=742NTWDAgWhnyLgl126a8Mlmxh0AGz4LHiy7UPWIG1g0ODU=&JDRN=Y" class="btn btn--plum hdr__cta" target="_blank" rel="noopener">Book Now</a>
       <button class="hdr__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -75,7 +75,7 @@ function buildFooter() {
   el.innerHTML = `
     <div class="shell ftr__top">
       <div>
-        <img src="${logoUrl}" alt="Centre Point Amravati" class="ftr__logo" width="1200" height="683" loading="lazy" />
+        <img src="${logoUrl}" alt="Centre Point Amravati" class="ftr__logo" width="500" height="285" loading="lazy" />
         <p class="ftr__blurb">The city's address for business and celebrations, near Chatri Talav in Dastur Nagar.</p>
       </div>
       <div>
