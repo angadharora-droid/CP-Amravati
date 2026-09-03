@@ -47,7 +47,7 @@ function buildHeader() {
   el.className = 'hdr';
   el.innerHTML = `
     <div class="hdr__in">
-      <a href="index.html" class="hdr__logo"><img src="${logoUrl}" alt="Centre Point Amravati" /></a>
+      <a href="index.html" class="hdr__logo"><img src="${logoUrl}" alt="Centre Point Amravati" width="1200" height="683" /></a>
       <nav><ul class="hdr__nav">${items}</ul></nav>
       <a href="https://www.swiftbook.io/inst/#home?propertyId=742NTWDAgWhnyLgl126a8Mlmxh0AGz4LHiy7UPWIG1g0ODU=&JDRN=Y" class="btn btn--plum hdr__cta" target="_blank" rel="noopener">Book Now</a>
       <button class="hdr__burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -75,11 +75,11 @@ function buildFooter() {
   el.innerHTML = `
     <div class="shell ftr__top">
       <div>
-        <img src="${logoUrl}" alt="Centre Point Amravati" class="ftr__logo" />
+        <img src="${logoUrl}" alt="Centre Point Amravati" class="ftr__logo" width="1200" height="683" loading="lazy" />
         <p class="ftr__blurb">The city's address for business and celebrations, near Chatri Talav in Dastur Nagar.</p>
       </div>
       <div>
-        <h4>Explore</h4>
+        <h3>Explore</h3>
         <ul class="ftr__col">
           <li><a href="rooms.html">Rooms &amp; Suites</a></li>
           <li><a href="dining.html">Dining</a></li>
@@ -90,7 +90,7 @@ function buildFooter() {
         </ul>
       </div>
       <div>
-        <h4>Visit</h4>
+        <h3>Visit</h3>
         <ul class="ftr__col">
           <li>Near Chatri Talav,</li>
           <li>Dastur Nagar, Amravati</li>
@@ -99,7 +99,7 @@ function buildFooter() {
         </ul>
       </div>
       <div>
-        <h4>Reservations</h4>
+        <h3>Reservations</h3>
         <ul class="ftr__contact">
           <li><a href="tel:+919266923456">+91 92669 23456</a><em>Rooms</em></li>
           <li><a href="tel:+919763715985">+91 97637 15985</a><em>Hotel desk</em></li>
@@ -195,15 +195,27 @@ function wireSplit() {
 function wireParallax() {
   const els = [...document.querySelectorAll('[data-parallax]')];
   if (!els.length) return;
-  const onScroll = () => {
+  // Skip on small screens and for reduced-motion: the scroll-linked transform
+  // forces a layout on every frame and buys nothing on a phone.
+  if (window.matchMedia('(max-width: 1000px), (prefers-reduced-motion: reduce)').matches) return;
+
+  let ticking = false;
+  const paint = () => {
+    ticking = false;
+    const vh = window.innerHeight;
     els.forEach((el) => {
-      const r = el.getBoundingClientRect();
+      const r = el.getBoundingClientRect();          // one read per frame
       const speed = parseFloat(el.dataset.parallax) || 0.12;
-      const off = (r.top + r.height / 2 - window.innerHeight / 2) * -speed;
+      const off = (r.top + r.height / 2 - vh / 2) * -speed;
       el.style.transform = `translate3d(0, ${off.toFixed(1)}px, 0) scale(1.12)`;
     });
   };
-  onScroll();
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(paint);                    // batch the write
+  };
+  paint();
   window.addEventListener('scroll', onScroll, { passive: true });
 }
 
@@ -286,6 +298,36 @@ function wireGallery() {
   });
 }
 
+/* ---------- a11y: label the third-party booking widget's fields ----------
+   The SwiftBook quick-book widget injects its own inputs after load with no
+   labels. Give any unlabelled control an aria-label so screen readers (and
+   Lighthouse) don't see a bare box. */
+function wireWidgetLabels() {
+  const host = document.querySelector('[id^="quickbook-widget-"], .Configure-quickBook-Widget');
+  if (!host) return;
+
+  const NAMES = {
+    adult: 'Number of adults', child: 'Number of children', children: 'Number of children',
+    room: 'Number of rooms', promo: 'Promo code', promocode: 'Promo code', coupon: 'Coupon code',
+    checkin: 'Check-in date', checkout: 'Check-out date', nights: 'Number of nights',
+  };
+  const label = (el) => {
+    if (el.getAttribute('aria-label') || el.getAttribute('aria-labelledby') || el.id && host.querySelector(`label[for="${el.id}"]`)) return;
+    const key = (el.name || el.id || el.getAttribute('placeholder') || '').toLowerCase().replace(/[^a-z]/g, '');
+    let text = el.getAttribute('placeholder') || el.getAttribute('title') || '';
+    for (const k in NAMES) if (key.includes(k)) { text = NAMES[k]; break; }
+    if (!text && el.type === 'number') text = 'Quantity';
+    if (text) el.setAttribute('aria-label', text);
+  };
+  const scan = () => host.querySelectorAll('input:not([type=hidden]), select, textarea, button:not([aria-label])').forEach((el) => {
+    if (el.tagName === 'BUTTON') { if (!el.textContent.trim() && !el.getAttribute('aria-label')) el.setAttribute('aria-label', 'Search availability'); return; }
+    label(el);
+  });
+
+  scan();
+  new MutationObserver(scan).observe(host, { childList: true, subtree: true });
+}
+
 /* ---------- enquiry form ---------- */
 function wireEnquiry() {
   const form = document.getElementById('enquiryForm');
@@ -325,4 +367,5 @@ wireParallax();
 wireRoomIndex();
 wireEditoSlides();
 wireGallery();
+wireWidgetLabels();
 wireEnquiry();

@@ -80,24 +80,24 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
 }
 
 [data-photo="facade"] {
-  background-image: url('./assets/images/hotel-amravati-aerial.jpeg');
+  background-image: url('./assets/images/hotel-amravati-aerial.webp');
   background-position: center 58%;
   image-rendering: auto;
 }
-[data-photo="bougainvillea"] { background-image: url('./assets/images/bougainvillea-window-table.jpeg'); }
-[data-photo="in-room-dining"] { background-image: url('./assets/images/twin-room.jpeg'); }
-[data-photo="executive"] { background-image: url('./assets/images/executive-twin.jpeg'); }
-[data-photo="premium"] { background-image: url('./assets/images/premium-bedroom.jpeg'); }
-[data-photo="family"] { background-image: url('./assets/images/family-room.jpeg'); }
-[data-photo="club"] { background-image: url('./assets/images/club-bed.jpeg'); }
-[data-photo="deluxe"] { background-image: url('./assets/images/deluxe-bedroom.jpeg'); }
-[data-photo="luxury"] { background-image: url('./assets/images/suite-lounge-portrait.jpeg'); }
-[data-photo="greens"] { background-image: url('./assets/images/greens-lawn.jpeg'); }
-[data-photo="city-aerial"] { background-image: url('./assets/images/hotel-amravati-aerial.jpeg'); }
-[data-photo="side-facade"] { background-image: url('./assets/images/hotel-chatri-talav.jpeg'); }
-[data-photo="orchid-wide"] { background-image: url('./assets/images/orchid-ballroom-stage.jpeg'); }
-[data-photo="orchid-seating"] { background-image: url('./assets/images/ballroom-seating.jpeg'); }
-[data-photo="orchid-detail"] { background-image: url('./assets/images/ballroom-chandelier.jpeg'); }
+[data-photo="bougainvillea"] { background-image: url('./assets/images/bougainvillea-window-table.webp'); }
+[data-photo="in-room-dining"] { background-image: url('./assets/images/twin-room.webp'); }
+[data-photo="executive"] { background-image: url('./assets/images/executive-twin.webp'); }
+[data-photo="premium"] { background-image: url('./assets/images/premium-bedroom.webp'); }
+[data-photo="family"] { background-image: url('./assets/images/family-room.webp'); }
+[data-photo="club"] { background-image: url('./assets/images/club-bed.webp'); }
+[data-photo="deluxe"] { background-image: url('./assets/images/deluxe-bedroom.webp'); }
+[data-photo="luxury"] { background-image: url('./assets/images/suite-lounge-portrait.webp'); }
+[data-photo="greens"] { background-image: url('./assets/images/greens-lawn.webp'); }
+[data-photo="city-aerial"] { background-image: url('./assets/images/hotel-amravati-aerial.webp'); }
+[data-photo="side-facade"] { background-image: url('./assets/images/hotel-chatri-talav.webp'); }
+[data-photo="orchid-wide"] { background-image: url('./assets/images/orchid-ballroom-stage.webp'); }
+[data-photo="orchid-seating"] { background-image: url('./assets/images/ballroom-seating.webp'); }
+[data-photo="orchid-detail"] { background-image: url('./assets/images/ballroom-chandelier.webp'); }
 .plate__caption {
   position: absolute;
   left: 20px;
@@ -241,7 +241,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; }
 .hour--night {
   background-image:
     linear-gradient(90deg, rgba(0,0,0,0.98) 0%, rgba(0,0,0,0.9) 52%, rgba(0,0,0,0.68) 100%),
-    url('./assets/images/atrium.jpeg');
+    url('./assets/images/atrium.webp');
   background-size: cover;
   background-position: center;
 }
